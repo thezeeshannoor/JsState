@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>State Task</title>
+</head>
+<body>
+    <div class="flex"><button class="btn btn-primary " onclick="menuFun()">Click Me</button></div>
+    <section class="menu d-none" id="menu">
+        <div class="closeBtn" onclick="menuFun()">X</div>
+        <div class="menuData">
+            <div class="numbers">
+                <div class="num num1">1</div>
+                <div class="num num2">2</div>
+                <div class="num num3">3</div>
+            </div>
+
+            <div class="txt" id="txt"></div>
+
+            <div class="btns">
+                <button class="btn "onclick="Prev()" id="prev">Prev</button>
+                <button class="btn "onclick="Reset()">Reset</button>
+                <button class="btn "onclick="Next()" id="next">Next</button>
+            </div>
+
+
+        </div>
+    </section>
+ <script src="./script.js"></script>
+</body>
+</html>

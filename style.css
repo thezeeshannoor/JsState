@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.btn{
+    padding: 10px 14px;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: rgb(99, 14, 179);
+}
+.btn-primary{
+    background-color: aqua;
+}
+.d-none{
+    display: none;
+}
+.bgNum{
+    background-color: rgb(99, 14, 179) !important;
+    color: white;
+}
+.menu{
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.menuData{
+    background-color:  rgb(247, 243, 243);
+    padding: 20px;
+}
+.closeBtn{
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    font-size: 30px;
+}
+.numbers,.btns{
+    display: flex;
+    justify-content: space-evenly;
+}
+.txt{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+.num{
+    background-color: rgb(224, 221, 221);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
