@@ -45,6 +45,8 @@ let Reset = () => {
     counter = 0;
     BgNum();
     txt.innerText = messages[counter];
+    next.style.backgroundColor = "rgb(99, 14, 179)";
+    prev.style.backgroundColor = "rgb(99, 14, 179)";
 }
 let BgNum = () => {
 
