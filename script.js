@@ -63,10 +63,10 @@ BgNum();
 //second task js code
 
 // for step increment
-let conStep=0;
+let conStep=1;
 let stepCount=document.getElementById("stepCount");
 let SubStep=()=>{
-    if(conStep==0)conStep=0;
+    if(conStep==1)conStep=1;
     else conStep--;
 stepCount.innerText=conStep;
 }
