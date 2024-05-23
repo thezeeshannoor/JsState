@@ -7,6 +7,7 @@
     <title>State Task</title>
 </head>
 <body>
+    <h2 class="head">Task1</h2>
     <div class="flex"><button class="btn btn-primary " onclick="menuFun()">Click Me</button></div>
     <section class="menu d-none" id="menu">
         <div class="closeBtn" onclick="menuFun()">X</div>
@@ -26,6 +27,36 @@
             </div>
 
 
+        </div>
+    </section>
+
+    <!-- task 2  -->
+    <section class="dateSec">
+        <h2 class="head">Task2</h2>
+
+        <!-- step div -->
+        <div class="stepDiv">
+            <button class="btn" onclick="SubStep()">-</button>
+            <h2>Step: <span id="stepCount">0</span></h2>
+            <button class="btn" onclick="AddStep()">+</button>
+        </div>
+
+        <!-- count div -->
+        <div class="countDiv">
+            <button class="btn" onclick="SubCount()">-</button>
+            <h2>Count: <span id="conInc">0</span></h2>
+            <button class="btn" onclick="AddCount()">+</button>
+        </div>
+
+        <!-- date and Day Section -->
+        <div class="dateDiv">
+            <h2>Today is :<span id="dateTxt"></span></h2>
+        </div>
+
+        <!-- api fetching -->
+        <div class="apiDiv">
+            <h2>Advice</h2>
+            <i id="adviceTxt"></i>
         </div>
     </section>
  <script src="./script.js"></script>

@@ -59,3 +59,67 @@ let BgNum = () => {
     }
 }
 BgNum();
+
+//second task js code
+
+// for step increment
+let conStep=0;
+let stepCount=document.getElementById("stepCount");
+let SubStep=()=>{
+    if(conStep==0)conStep=0;
+    else conStep--;
+stepCount.innerText=conStep;
+}
+let AddStep=()=>{
+    conStep++;
+    stepCount.innerText=conStep;
+}
+
+//for count increment js
+let con=0;
+let conInc=document.getElementById("conInc");
+let SubCount=()=>{
+    if(con==0)con=0;
+    else con--;
+    conInc.innerText=con;
+    let pro=con*conStep;
+    date(pro)
+}
+
+let AddCount=()=>{
+    con++;
+    conInc.innerText=con;
+    let pro=con*conStep;
+    date(pro)
+    ApiFun();
+}
+
+//date
+let date=(con)=>{
+    const currentDate = new Date();  
+if(con){
+    currentDate.setDate(currentDate.getDate() + con)
+}
+
+const dateString = currentDate.toDateString();
+
+console.log(`Current date: ${dateString}`);
+let dateTxt=document.getElementById("dateTxt");
+dateTxt.innerText=dateString;
+}
+date();
+
+///fetch api
+let ApiFun=()=>{
+    let adviceTxt=document.getElementById("adviceTxt");
+fetch('https://api.adviceslip.com/advice').then((data)=>{
+    // console.log(data.json());
+    return data.json();
+}).then((dataJson)=>{
+    adviceTxt.innerText= dataJson.slip.advice;
+}).catch((err)=>{
+    console.log(err);
+});
+}
+ApiFun();
+
