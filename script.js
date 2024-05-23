@@ -84,6 +84,7 @@ let SubCount=()=>{
     conInc.innerText=con;
     let pro=con*conStep;
     date(pro)
+    ApiFun();
 }
 
 let AddCount=()=>{
@@ -91,7 +92,7 @@ let AddCount=()=>{
     conInc.innerText=con;
     let pro=con*conStep;
     date(pro)
-    ApiFun();
+     ApiFun();
 }
 
 //date
@@ -112,7 +113,7 @@ date();
 ///fetch api
 let ApiFun=()=>{
     let adviceTxt=document.getElementById("adviceTxt");
-fetch('https://api.adviceslip.com/advice').then((data)=>{
+ fetch('https://api.adviceslip.com/advice').then((data)=>{
     // console.log(data.json());
     return data.json();
 }).then((dataJson)=>{
