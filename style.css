@@ -3,14 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-.btn{
+.btnn{
     padding: 10px 14px;
     border: none;
     color: white;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-    background-color: rgb(99, 14, 179);
+    background-color: rgb(99, 14, 179) ;
 }
 .btn-primary{
     background-color: aqua;
