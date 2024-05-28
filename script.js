@@ -144,14 +144,13 @@ const faqs = [
   for(let i=0;i<faqs.length;i++){
     let mainDiv=document.createElement("div");
     mainDiv.classList.add('faqDiv');
-     
     let headDiv=document.createElement("div");
     headDiv.classList.add('headDiv');
     let numEle=document.createElement("h2");
     numEle.innerText=`0${i+1}`;
     numEle.classList.add("numEle");
     numEle.style.color="gray";
-    let headEle=document.createElement("h3");
+    let headEle=document.createElement("h6");
     headEle.innerText=faqs[i].title;
     let sign=document.createElement('h2');
     sign.classList.add('sign');
@@ -170,40 +169,100 @@ const faqs = [
     document.getElementById('faqs').appendChild(mainDiv);
   };
   let faqDiv=document.querySelectorAll('.faqDiv');
-  let toggle=true;
+ 
   faqDiv.forEach(ele=>{
  
-    ele.addEventListener('click',()=>{
+    ele.addEventListener('click', () => {
       
-     
-        const allParas = document.querySelectorAll('#faqs p');
-        allParas.forEach(p => p.style.display = 'none');
+        document.querySelectorAll('.faqDiv').forEach(div => div.style.borderTop = 'none');
+        document.querySelectorAll('.numEle').forEach(num => num.style.color = 'gray');
+      
+    
+        ele.style.borderTop = '5px solid green';
+        ele.querySelector('.numEle').style.color = 'green';
+       
+    
         let para = ele.querySelector('p');
+        if(para.style.display=="block"){
+            para.style.display="none";
+            ele.querySelector('.sign').innerText = '+';
 
-        const allMainDiv=document.querySelectorAll(".faqDiv");
-        allMainDiv.forEach(mainDiv=>mainDiv.style.borderTop="none");
-        ele.style.borderTop='5px solid green';
-
-        const allNumEle=document.querySelectorAll('.numEle');
-        allNumEle.forEach(numEle=>numEle.style.color="gray");
-
-        let selectNumEle=ele.querySelector('.numEle');
-        selectNumEle.style.color="green";
-
-        const allSign=document.querySelectorAll('.sign');
-        allSign.forEach(sign=>sign.innerText='+');
-
-        let selectSign=ele.querySelector('.sign');
-        selectSign.innerText="-";
-        if(para.style.display=="block" ){
-            para.style.display="none"
-            toggle=true;
-            
         }else{
             para.style.display="block";
-            toggle=false;
+            ele.querySelector('.sign').innerText = '-';
         }
-     
+        
     });
     
-  })
+    
+  });
+
+//   Task 4;
+let dropDown=document.getElementById("dropDown");
+for(let i=1;i<=10;i++){
+    let option=document.createElement("option");
+    option.innerText=i;
+    option.value=i;
+    dropDown.appendChild(option);
+}
+let AddItems=()=>{
+   
+    let itemsInput = document.getElementById('itemsInput');
+    let tableBody=document.getElementById('tableBody');
+    let tr=document.createElement('tr');
+    tr.classList.add("notesDiv");
+    let remove =document.createElement('td');
+    let items=document.createElement('td');
+    let noItems=document.createElement('td');
+    remove.innerText='X';
+    remove.classList.add('remove');
+    remove.onclick=RemoveItems;
+    items.innerText= itemsInput.value;
+    noItems.innerText=dropDown.value;
+    tr.appendChild(noItems);
+    tr.appendChild(items);
+    tr.appendChild(remove);
+    tableBody.appendChild(tr);
+    itemsInput.value='';
+
+}
+    
+let RemoveItems=()=>{
+   
+    let allNotesDiv=document.querySelectorAll('.notesDiv');
+    allNotesDiv.forEach(notesDiv=>{
+        notesDiv.addEventListener('click',()=>{
+            notesDiv.remove();
+        })
+    })
+}
+let ClearList=()=>{
+    let allNotesDiv=document.querySelectorAll('.notesDiv');
+    allNotesDiv.forEach(notesDiv=>notesDiv.remove());
+}
+
+const list=[];
+let SortList=()=>{
+    
+    const sortOption = document.getElementById('sortMenu').value;
+    const tbody = document.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+     console.log(rows);
+    rows.sort((a, b) => {
+        const itemA = a.children[1].textContent.toLowerCase();
+        const itemB = b.children[1].textContent.toLowerCase();
+
+        if (sortOption === 'az') {
+            return itemA.localeCompare(itemB);
+        } else if (sortOption === 'za') {
+            return itemB.localeCompare(itemA);
+        } else {
+            return 0;
+        }
+    });
+
+    rows.forEach(row => tbody.appendChild(row));
+
+}
+document.getElementById('sortMenu').addEventListener('change',SortList);
+
