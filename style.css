@@ -158,7 +158,11 @@
     cursor: pointer;
   }
   #itemsBody{
-   
+   height: 400px;
+   overflow-y: scroll;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
     background-color: brown;
     padding: 20px;
   }
