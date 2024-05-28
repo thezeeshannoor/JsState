@@ -158,8 +158,7 @@
     cursor: pointer;
   }
   #itemsBody{
-   height: 400px;
-   overflow-y: scroll;
+
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -193,6 +192,7 @@
   }
   #btnMenu{
     display: flex;
+    margin:20px;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;

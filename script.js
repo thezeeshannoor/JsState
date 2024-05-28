@@ -168,34 +168,33 @@ const faqs = [
     mainDiv.appendChild(paraEle);
     document.getElementById('faqs').appendChild(mainDiv);
   };
-  let faqDiv=document.querySelectorAll('.faqDiv');
- 
-  faqDiv.forEach(ele=>{
- 
-    ele.addEventListener('click', () => {
-      
-        document.querySelectorAll('.faqDiv').forEach(div => div.style.borderTop = 'none');
-        document.querySelectorAll('.numEle').forEach(num => num.style.color = 'gray');
-      
-    
-        ele.style.borderTop = '5px solid green';
-        ele.querySelector('.numEle').style.color = 'green';
-       
-    
-        let para = ele.querySelector('p');
-        if(para.style.display=="block"){
-            para.style.display="none";
-            ele.querySelector('.sign').innerText = '+';
+  let faqDiv = document.querySelectorAll('.faqDiv');
 
-        }else{
-            para.style.display="block";
-            ele.querySelector('.sign').innerText = '-';
-        }
-        
-    });
-    
-    
+  faqDiv.forEach(ele => {
+      ele.addEventListener('click', () => {
+          
+          let para = ele.querySelector('p');
+          let isOpen = para.style.display === 'block';
+  
+
+          faqDiv.forEach(div => {
+              div.style.borderTop = 'none';
+              div.querySelector('.numEle').style.color = 'gray';
+              let divPara = div.querySelector('p');
+              divPara.style.display = 'none';
+              div.querySelector('.sign').innerText = '+';
+          });
+  
+          
+          if (!isOpen) {
+              ele.style.borderTop = '5px solid green';
+              ele.querySelector('.numEle').style.color = 'green';
+              para.style.display = 'block';
+              ele.querySelector('.sign').innerText = '-';
+          }
+      });
   });
+  
 
 //   Task 4;
 let dropDown=document.getElementById("dropDown");
