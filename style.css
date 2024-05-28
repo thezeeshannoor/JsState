@@ -172,10 +172,16 @@
     color: brown;
     font-weight: 800;
   }
-  tr{
-    margin: 20px 0;
-    text-align: center;
-  }
+.notesDiv{
+    background-color: white;
+    display: flex;
+    gap: 5px;
+    border-radius: 20px;
+    padding: 10px 10px 8px 10px;
+    justify-content: center;
+    align-items: end;
+    width: max-content;
+}
   #clearList{
     border: none;
     cursor: pointer;
@@ -185,7 +191,7 @@
     border-radius: 20px;
     font-weight: 600;
   }
-  #btmMenu{
+  #btnMenu{
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -202,4 +208,8 @@
     text-align: center;
     background-color: rgb(0, 255, 221);
     font-weight: 600;
+  }
+  #itemsList{
+    display: flex;
+    gap: 5px;
   }

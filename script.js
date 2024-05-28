@@ -208,21 +208,21 @@ for(let i=1;i<=10;i++){
 let AddItems=()=>{
    
     let itemsInput = document.getElementById('itemsInput');
-    let tableBody=document.getElementById('tableBody');
-    let tr=document.createElement('tr');
-    tr.classList.add("notesDiv");
-    let remove =document.createElement('td');
-    let items=document.createElement('td');
-    let noItems=document.createElement('td');
+    let itemsList=document.getElementById('itemsList');
+    let div=document.createElement('div');
+    div.classList.add("notesDiv");
+    let remove =document.createElement('h6');
+    let items=document.createElement('h6');
+    let noItems=document.createElement('h6');
     remove.innerText='X';
     remove.classList.add('remove');
     remove.onclick=RemoveItems;
     items.innerText= itemsInput.value;
     noItems.innerText=dropDown.value;
-    tr.appendChild(noItems);
-    tr.appendChild(items);
-    tr.appendChild(remove);
-    tableBody.appendChild(tr);
+    div.appendChild(noItems);
+    div.appendChild(items);
+    div.appendChild(remove);
+    itemsList.appendChild(div);
     itemsInput.value='';
 
 }
@@ -245,8 +245,8 @@ const list=[];
 let SortList=()=>{
     
     const sortOption = document.getElementById('sortMenu').value;
-    const tbody = document.querySelector('tbody');
-    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const itemsList = document.querySelector('#itemsList');
+    const rows = Array.from(itemsList.querySelectorAll('div'));
      console.log(rows);
     rows.sort((a, b) => {
         const itemA = a.children[1].textContent.toLowerCase();
@@ -261,7 +261,7 @@ let SortList=()=>{
         }
     });
 
-    rows.forEach(row => tbody.appendChild(row));
+    rows.forEach(row => itemsList.appendChild(row));
 
 }
 document.getElementById('sortMenu').addEventListener('change',SortList);
