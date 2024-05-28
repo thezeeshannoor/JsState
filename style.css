@@ -192,3 +192,10 @@
     padding: 10px;
     cursor: pointer;
   }
+  .btmDiv{
+    padding: 20px;
+    color: brown;
+    text-align: center;
+    background-color: rgb(0, 255, 221);
+    font-weight: 600;
+  }
