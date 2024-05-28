@@ -175,7 +175,7 @@
 .notesDiv{
     background-color: white;
     display: flex;
-    gap: 5px;
+    gap: 10px;
     border-radius: 20px;
     padding: 10px 10px 8px 10px;
     justify-content: center;
@@ -211,5 +211,6 @@
   }
   #itemsList{
     display: flex;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 20px;
   }
