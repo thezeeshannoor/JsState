@@ -266,3 +266,103 @@ let SortList=()=>{
 }
 document.getElementById('sortMenu').addEventListener('change',SortList);
 
+
+// Task 5 cards 
+const questions = [
+    {
+      id: 3457,
+      question: "What language is React based on?",
+      answer: "JavaScript",
+    },
+    {
+      id: 7336,
+      question: "What are the building blocks of React apps?",
+      answer: "Components",
+    },
+    {
+      id: 8832,
+      question: "What's the name of the syntax we use to describe a UI in React?",
+      answer: "JSX",
+    },
+    {
+      id: 1297,
+      question: "How to pass data from parent to child components?",
+      answer: "Props",
+    },
+    {
+      id: 9103,
+      question: "How to give components memory?",
+      answer: "useState hook",
+    },
+    {
+      id: 2002,
+      question:
+        "What do we call an input element that is completely synchronised with state?",
+      answer: "Controlled element",
+    },
+  ];
+
+  let cards=document.getElementById('cards');
+  for(let i=0;i<questions.length;i++){
+    
+    let div=document.createElement('div');
+    div.classList.add('card','white');
+    div.setAttribute("id",`${questions[i].id}` );
+
+    div.innerText=questions[i].question;
+   
+    cards.appendChild(div);
+    
+  }
+
+let allCard=document.querySelectorAll('.card');
+
+let allCardFun=()=>{
+    let allCardd=document.querySelectorAll('.card');
+    for(let i=0;i<questions.length;i++){
+        allCardd[i].style.backgroundColor="white";
+        allCard[i].textContent=questions[i].question;
+        
+        
+    }
+}
+allCard.forEach(card=>{
+    
+    card.addEventListener('click',(e)=>{
+        
+        let isOpen = card.style.backgroundColor === 'pink';
+        allCardFun();
+        let id=e.target.id;
+        let ques=questions.find(q=>q.id==id);
+   
+        if(ques && card.style.backgroundColor=='white'){
+            card.textContent=ques.answer
+            card.style.backgroundColor="pink";  
+        }
+        if(isOpen){
+            card.textContent=ques.question;
+            card.style.backgroundColor="white";
+        }
+    });
+})
+
+// Task 6 Bill
+let menu=document.getElementById('menuu');
+let frdMenu=document.getElementById('frdMenu');
+let total=document.getElementById('total');
+
+let BillCal=()=>{
+    let avg=(parseInt(frdMenu.value) + parseInt(menu.value))/2;
+    let tip=(avg * parseInt(bill.value))/100;
+    total.innerText=`You Pay $ ${parseInt(bill.value) + tip} ($ ${parseInt(bill.value)} + $ ${tip} tip)`
+}
+let bill =document.getElementById('bill');
+bill.addEventListener('change',BillCal);
+frdMenu.addEventListener('change',BillCal);
+menu.addEventListener('change',BillCal);
+
+let ResetCal=()=>{
+
+bill.value="";
+total.innerText='';
+}
