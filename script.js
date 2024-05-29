@@ -168,33 +168,34 @@ const faqs = [
     mainDiv.appendChild(paraEle);
     document.getElementById('faqs').appendChild(mainDiv);
   };
-  let faqDiv = document.querySelectorAll('.faqDiv');
+  let faqDiv=document.querySelectorAll('.faqDiv');
+ 
+  faqDiv.forEach(ele=>{
+ 
+    ele.addEventListener('click', () => {
+      
+        let para = ele.querySelector('p');
+        
+        let isOpen = para.style.display === 'block';
+        document.querySelectorAll('.faqDiv').forEach(faqDiv => {
+            faqDiv.style.borderTop = 'none';
+            faqDiv.querySelector('.numEle').style.color='gray';
+            faqDiv.querySelector('p').style.display='none';
+            faqDiv.querySelector('.sign').innerText = '+';
+        });
+       
+        if(isOpen){
+            
+            return para.style.display="none";
+        }
+        ele.style.borderTop = '5px solid green';
+        ele.querySelector('.numEle').style.color = 'green';
+        para.style.display="block";
+        ele.querySelector('.sign').innerText = '-';
+        
+    });
 
-  faqDiv.forEach(ele => {
-      ele.addEventListener('click', () => {
-          
-          let para = ele.querySelector('p');
-          let isOpen = para.style.display === 'block';
-  
-
-          faqDiv.forEach(div => {
-              div.style.borderTop = 'none';
-              div.querySelector('.numEle').style.color = 'gray';
-              let divPara = div.querySelector('p');
-              divPara.style.display = 'none';
-              div.querySelector('.sign').innerText = '+';
-          });
-  
-          
-          if (!isOpen) {
-              ele.style.borderTop = '5px solid green';
-              ele.querySelector('.numEle').style.color = 'green';
-              para.style.display = 'block';
-              ele.querySelector('.sign').innerText = '-';
-          }
-      });
   });
-  
 
 //   Task 4;
 let dropDown=document.getElementById("dropDown");
