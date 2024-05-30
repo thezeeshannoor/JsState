@@ -178,8 +178,15 @@
     border-radius: 20px;
     padding: 10px 10px 8px 10px;
     justify-content: center;
-    align-items: end;
-    width: max-content;
+    align-items: center;
+    
+}
+.check{
+  margin-bottom: 4px;
+  cursor: pointer;
+  transform: scale(1.2);
+
+ 
 }
   #clearList{
     border: none;
@@ -234,15 +241,12 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 20px;
   }
-  @media(max-width:500px){
-    .card{
-      width: 80%;
-    }
-  }
-  @media(min-width:501px) and (max-width:800px){
-    .card{
-      width: 45%;
-    }
+
+  .todoP{
+    display: flex;
+   margin-top: 12px;
+    align-items: center;
+    gap: 2px;
   }
   /* task 6 */
   .task6{
@@ -255,4 +259,145 @@
   .resetDiv{
     display: flex;
     gap: 5px;
+  }
+
+  /* task 7  profile card*/
+
+  #profileCardSec{
+    font-family: 'Courier New', Courier, monospace;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    gap: 10px;
+    
+   
+  }
+  .profileCard h5{
+    font-weight: 600;
+  }
+  .profileCard{
+    position: relative;
+    height: 570px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 5px solid black;
+    width: 360px;
+  
+  
+  }
+  .profileCard img{
+    height: 220px;
+    width: 350px;
+    margin-bottom: 10px;
+
+  }
+  .skills{
+    bottom: 0;
+    display: flex;
+    gap:20px;
+    align-items: end;
+    position: absolute;
+    flex-wrap: wrap;
+  }
+  .skills div{
+   width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color:black;
+  }
+  .name,.skills,.profileCard p{
+  margin: 18px;
+  }
+
+  /* Task 8 */
+  #pizzaMenu{
+    background-color: #f7f2e9;
+  }
+  .pizzaHead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #edc94f;
+    
+  }
+  .bar{
+    width: 50px;
+    height: 3px;
+    background-color: #f3d263;
+    border-radius: 10px;
+  }
+  .menuHead{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    justify-content: center;
+  }
+  .line2{
+    width: 150px;
+    height: 3px;
+    background-color: black;
+  }
+  .line1{
+    width: 150px;
+    height: 2px;
+    background-color: black;
+  }
+  .menuTxt{
+    margin-top: 5px;
+  }
+  .pizzaPara{
+    text-align: center;
+    margin: 30px auto;
+    width: 40%;
+  }
+  #pizzaData{
+    display: flex;
+    justify-content: center;
+ 
+   
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pizzaChild{
+    width:40%;
+    display: flex;
+    
+    gap:10px;
+  }
+  .pizzaChild img{
+    width:120px;
+    height: 120px;
+  }
+  .pizzaChild p{
+    width: 100%;
+  }
+  .pizzaBtn{
+    border: none;
+    background-color: #edc94f;
+    color: brown;
+    padding: 10px;
+  }
+  .btnDiv{
+    display: flex;
+    justify-content: center;
+  }
+  @media(max-width:500px){
+    .card{
+      width: 80%;
+    }
+    .pizzaChild{
+      width:80%
+    }
+  }
+  @media(min-width:501px) and (max-width:800px){
+    .card{
+      width: 45%;
+    }
+    .pizzaChild{
+      width: 80%;
+    }
   }

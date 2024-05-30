@@ -208,7 +208,16 @@ for(let i=1;i<=10;i++){
 let AddItems=()=>{
    
     let itemsInput = document.getElementById('itemsInput');
+    if(itemsInput.value==''){
+        return;
+    }
     let itemsList=document.getElementById('itemsList');
+    let wrap=document.createElement('p');
+    wrap.classList.add('todoP');
+    let check=document.createElement('input');
+    check.type='checkbox';
+    check.classList.add('check');
+    check.onclick=CheckFun;
     let div=document.createElement('div');
     div.classList.add("notesDiv");
     let remove =document.createElement('h6');
@@ -216,32 +225,35 @@ let AddItems=()=>{
     let noItems=document.createElement('h6');
     remove.innerText='X';
     remove.classList.add('remove');
-    remove.onclick=RemoveItems;
+    
+    remove.addEventListener('click',()=>{
+        RemoveItems(div)
+    })
+    
     items.innerText= itemsInput.value;
     noItems.innerText=dropDown.value;
-    div.appendChild(noItems);
-    div.appendChild(items);
+    div.appendChild(check);
+    wrap.appendChild(noItems);
+    wrap.appendChild(items);
+    div.appendChild(wrap);
     div.appendChild(remove);
     itemsList.appendChild(div);
     itemsInput.value='';
 
+    CheckFun();
+    Strike();
 }
-    
-let RemoveItems=()=>{
    
-    let allNotesDiv=document.querySelectorAll('.notesDiv');
-    allNotesDiv.forEach(notesDiv=>{
-        notesDiv.addEventListener('click',()=>{
-            notesDiv.remove();
-        })
-    })
+let RemoveItems=(div)=>{
+   
+    div.remove();
 }
 let ClearList=()=>{
     let allNotesDiv=document.querySelectorAll('.notesDiv');
     allNotesDiv.forEach(notesDiv=>notesDiv.remove());
 }
 
-const list=[];
+
 let SortList=()=>{
     
     const sortOption = document.getElementById('sortMenu').value;
@@ -266,6 +278,37 @@ let SortList=()=>{
 }
 document.getElementById('sortMenu').addEventListener('change',SortList);
 
+let CheckFun=()=>{
+ let farAwayTxt=document.getElementById('farAwayTxt');
+let Allcheck=document.querySelectorAll('.check');
+let packed=0; let count=0;
+Allcheck.forEach(check=>{
+    count++;
+ if(check.checked){
+    packed++;
+ }
+});
+farAwayTxt.innerText=`You have ${count} items on your list, and you already packed ${packed} (${(packed *100)/count}%)`
+}
+
+let Strike=()=>{
+    let notesDivv=document.querySelectorAll('.notesDiv');
+notesDivv.forEach(div=>{
+    div.addEventListener('click',()=>{
+        
+       let p= div.querySelector('p');
+       let check=div.querySelector('.check');
+       if(check.checked){
+        p.innerHTML=`<s>${p.innerText}</s>`;
+       }else{
+        p.innerHTML=p.innerText;
+       }
+       
+     
+       
+    })
+})
+}
 
 // Task 5 cards 
 const questions = [
@@ -357,12 +400,273 @@ let BillCal=()=>{
     total.innerText=`You Pay $ ${parseInt(bill.value) + tip} ($ ${parseInt(bill.value)} + $ ${tip} tip)`
 }
 let bill =document.getElementById('bill');
-bill.addEventListener('change',BillCal);
+
 frdMenu.addEventListener('change',BillCal);
-menu.addEventListener('change',BillCal);
+
 
 let ResetCal=()=>{
 
 bill.value="";
+menu.value='0';
+frdMenu.value='0';
 total.innerText='';
 }
+
+// Task 7 profile card
+const profileData = [
+    {
+      id: 1,
+      name: "Jonas Schmedtmann",
+      intro:
+        "Full-stack web developer and teacher at Udemy. When not coding or preparing a course, I like to play board games, to cook (and eat), or to just enjoy the Portuguese sun at the beach.",
+      image: "images/1.jpg",
+      skills: [
+        {
+          name: "React",
+          color: "lightblue",
+          level: "Intermediate",
+        },
+        {
+          name: "HTML+CSS",
+          color: "blue",
+          level: "Advanced",
+        },
+        {
+          name: "JavaScript",
+          color: "yellow",
+          level: "Intermediate",
+        },
+        {
+          name: "Svelte",
+          color: "orangered",
+          level: "Beginner",
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Sara Vieira",
+      intro:
+        "Developer Advocate at YLD and Speaker. I enjoy coding, traveling, and sharing knowledge with the community.",
+      image: "images/2.jpg",
+      skills: [
+        {
+          name: "React",
+          color: "lightblue",
+          level: "Intermediate",
+        },
+        {
+          name: "JavaScript",
+          color: "yellow",
+          level: "Intermediate",
+        },
+        {
+          name: "GraphQL",
+          color: "purple",
+          level: "Advanced",
+        },
+        {
+          name: "Node.js",
+          color: "green",
+          level: "Intermediate",
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: "Chris Coyier",
+      intro:
+        "Web Developer, Writer, and Speaker. I love building things for the web and sharing what I learn through my blog and talks.",
+      image: "images/3.jpg",
+      skills: [
+        {
+          name: "HTML+CSS",
+          color: "blue",
+          level: "Advanced",
+        },
+        {
+          name: "JavaScript",
+          color: "yellow",
+          level: "Intermediate",
+        },
+        {
+          name: "SVG",
+          color: "orange",
+          level: "Intermediate",
+        },
+        {
+          name: "WordPress",
+          color: "blue",
+          level: "Intermediate",
+        },
+      ],
+    },
+    {
+      id: 4,
+      name: "Ari Lerner",
+      intro:
+        "Software Engineer, Author, and Speaker. I specialize in building scalable web applications and teaching others how to do the same.",
+      image: "images/4.jpg",
+      skills: [
+        {
+          name: "Angular",
+          color: "red",
+          level: "Intermediate",
+        },
+        {
+          name: "Node.js",
+          color: "green",
+          level: "Advanced",
+        },
+        {
+          name: "TypeScript",
+          color: "blue",
+          level: "Intermediate",
+        },
+        {
+          name: "Docker",
+          color: "blue",
+          level: "Intermediate",
+        },
+      ],
+    },
+    {
+      id: 5,
+      name: "Ali Spittel",
+      intro:
+        "Senior Developer Advocate at AWS and Blogger. I'm passionate about education, accessibility, and building inclusive communities in tech.",
+      image: "images/5.jpg",
+      skills: [
+        {
+          name: "Python",
+          color: "blue",
+          level: "Intermediate",
+        },
+        {
+          name: "JavaScript",
+          color: "yellow",
+          level: "Intermediate",
+        },
+        {
+          name: "React",
+          color: "lightblue",
+          level: "Intermediate",
+        },
+        {
+          name: "AWS",
+          color: "orange",
+          level: "Advanced",
+        },
+      ],
+    },
+  ];
+  
+ let profileCardSec=document.getElementById('profileCardSec');
+for(let i=0;i<profileData.length;i++){
+    let div=document.createElement('div');
+    div.classList.add('profileCard');
+    let img=document.createElement('img');
+    img.src=profileData[i].image;
+    let name=document.createElement('h5');
+    name.classList.add('name');
+    name.innerText=profileData[i].name;
+    let intro=document.createElement('p');
+    intro.innerText=profileData[i].intro;
+
+    let skills=document.createElement('div');
+    skills.classList.add('skills');
+    for(let j=0;j<profileData[i].skills.length;j++){
+        let skill=document.createElement('div');
+        skill.innerText=profileData[i].skills[j].name;
+        skill.style.backgroundColor=profileData[i].skills[j].color;
+        
+        skills.appendChild(skill);
+    }
+
+    div.appendChild(img);
+    div.appendChild(name);
+    div.appendChild(intro);
+    div.appendChild(skills);
+
+    profileCardSec.appendChild(div)
+
+}
+
+
+// Task 8 
+const pizzaData = [
+    {
+      name: "Focaccia",
+      ingredients: "Bread with italian olive oil and rosemary",
+      price: 6,
+      photoName: "images/6.jpg",
+      soldOut: false,
+    },
+    {
+      name: "Pizza Margherita",
+      ingredients: "Tomato and mozarella",
+      price: 10,
+      photoName: "images/7.jpg",
+      soldOut: false,
+    },
+    {
+      name: "Pizza Spinaci",
+      ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
+      price: 12,
+      photoName: "images/8.jpg",
+      soldOut: false,
+    },
+    {
+      name: "Pizza Funghi",
+      ingredients: "Tomato, mozarella, mushrooms, and onion",
+      price: 12,
+      photoName: "images/9.jpg",
+      soldOut: false,
+    },
+    {
+      name: "Pizza Salamino",
+      ingredients: "Tomato, mozarella, and pepperoni",
+      price: 15,
+      photoName: "images/10.jpg",
+      soldOut: true,
+    },
+    {
+      name: "Pizza Prosciutto",
+      ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
+      price: 18,
+      photoName: "images/6.jpg",
+      soldOut: false,
+    },
+  ];
+  
+let pizzaDataDiv=document.getElementById('pizzaData');
+for(let i=0;i<pizzaData.length;i++){
+ let div=document.createElement('div');
+ div.classList.add('pizzaChild');
+ let img=document.createElement('img');
+ img.src=pizzaData[i].photoName;
+
+ let txt=document.createElement('div');
+ let head=document.createElement('h4');
+ head.innerText=pizzaData[i].name;
+ let desc=document.createElement('p');
+ desc.innerText=pizzaData[i].ingredients;
+ let price=document.createElement('b');
+ price.innerText=pizzaData[i].price;
+
+ if(pizzaData[i].soldOut==true){
+    price.innerHTML="<b>SOLD OUT</b>";
+    div.style.color="gray";
+    div.style.filter="grayscale(100%)";
+ }
+
+ txt.appendChild(head);
+ txt.appendChild(desc);
+ txt.appendChild(price);
+
+ div.appendChild(img);
+ div.appendChild(txt);
+
+ pizzaDataDiv.appendChild(div);
+}
+  
