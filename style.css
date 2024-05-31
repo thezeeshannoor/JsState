@@ -281,14 +281,14 @@
     position: relative;
     height: 570px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     width: 360px;
   
   
   }
   .profileCard img{
     height: 220px;
-    width: 350px;
+    width: 100%;
     margin-bottom: 10px;
 
   }
@@ -357,22 +357,24 @@
   #pizzaData{
     display: flex;
     justify-content: center;
- 
-   
     gap: 10px;
     flex-wrap: wrap;
   }
   .pizzaChild{
-    width:40%;
+    background-color: antiquewhite;
+    width: 45%;
     display: flex;
-    
     gap:10px;
+  }
+  .pizzaChild div{
+    padding: 20px;
   }
   .pizzaChild img{
     width:120px;
     height: 120px;
   }
   .pizzaChild p{
+ 
     width: 100%;
   }
   .pizzaBtn{
